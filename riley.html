@@ -1,0 +1,762 @@
+<!DOCTYPE html> <html lang=en style><!--
+ Page saved with SingleFile 
+--><meta charset=utf-8>
+<meta name=viewport content="width=device-width, initial-scale=1.0">
+<title>Lecture Notes (Riley)</title>
+<style>:root{--primary-accent:#2563eb;--text-main:#1f2937;--bg-document:#ffffff;--bg-code:#1e1e1e;--border-color:#e5e7eb;--note-bg:#f0f9ff;--note-text:#0369a1;--tip-bg:#f0fdf4;--tip-text:#15803d;--caution-bg:#fffbeb;--caution-text:#b45309;--diff-add:#064e3b;--diff-del:#450a0a}body{font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;line-height:1.6;color:var(--text-main);background-color:var(--bg-document);margin:0;padding:0;counter-reset:h2-counter listing-counter figure-counter table-counter}main{max-width:1000px;margin:0 auto;padding:2rem}header{text-align:center;padding:3rem 1rem;border-bottom:1px solid var(--border-color)}h2{counter-reset:h3-counter;margin-top:2.5rem}h2::before{counter-increment:h2-counter;content:counter(h2-counter)". ";color:var(--primary-accent)}h3::before{counter-increment:h3-counter;content:counter(h2-counter)"."counter(h3-counter)" ";color:var(--primary-accent)}p{margin-bottom:1.25rem}:not(pre)>code{background-color:#f3f4f6;padding:0.2rem 0.4rem;border-radius:4px;font-family:"Fira Code",monospace;font-size:0.9em}pre>code{padding:0;border-radius:0}table{width:100%;border-collapse:collapse;margin:1.5rem 0}th,td{border:1px solid var(--border-color);padding:0.75rem;text-align:left}.callout,.code-listing{border-radius:8px;overflow:hidden;margin:1.5rem 0}.callout{padding:1rem;border-left:4px solid}.callout-title{font-weight:bold;text-transform:uppercase;margin-bottom:0.5rem;font-size:0.85rem}.callout-note{background:var(--note-bg);border-color:var(--note-text);color:var(--text-main)}.callout-note .callout-title{color:var(--note-text)}.callout-caution{background:var(--caution-bg);border-color:var(--caution-text);color:var(--text-main)}.callout-caution .callout-title{color:var(--caution-text)}.component-flex-container{display:flex;align-items:stretch;background:var(--bg-code)}.listing-header{background:#333;color:#eee;padding:0.5rem 1rem;font-family:monospace;font-size:0.8rem;border-bottom:1px solid #444}.listing-body{margin:0!important;border-radius:0!important;flex-grow:1}.code-listing+.caption .caption-label::before,.diff-view+.caption .caption-label::before{counter-increment:listing-counter;content:"Listing "counter(listing-counter)": ";font-weight:bold}.diagram+.caption .caption-label::before{counter-increment:figure-counter;content:"Figure "counter(figure-counter)": ";font-weight:bold}table+.caption .caption-label::before{counter-increment:table-counter;content:"Table "counter(table-counter)": ";font-weight:bold}</style>
+<style>code[class*=language-],pre[class*=language-]{color:#ccc;background:0 0;font-family:Consolas,Monaco,"Andale Mono","Ubuntu Mono",monospace;font-size:1em;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:1em;overflow:auto}pre[class*=language-]{background:#2d2d2d}.token.punctuation{color:#ccc}.token.number{color:#f08d49}.token.builtin,.token.keyword{color:#cc99cd}.token.string{color:#7ec699}.token.operator{color:#67cdcc}</style>
+<style>pre[class*=language-].line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}pre[class*=language-].line-numbers>code{position:relative;white-space:inherit}.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:0;font-size:100%;left:-3.8em;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.line-numbers-rows>span{display:block;counter-increment:linenumber}.line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}</style>
+<style>h2::before,h3::before{content:none!important}h2,h3{counter-increment:none!important}</style>
+<meta name=referrer content=no-referrer><meta http-equiv=content-security-policy content="default-src 'none'; font-src 'self' data:; img-src 'self' data:; style-src 'unsafe-inline'; media-src 'self' data:; script-src 'unsafe-inline' data:; object-src 'self' data:; frame-src 'self' data:;"></head>
+<body>
+ <header>
+ <h1>Conditionals (Riley)</h1>
+ </header>
+ 
+ <main>
+ <aside class="callout callout-note">
+ <div class=callout-title>Note</div>
+ <div class=callout-content>
+ "Conditionals allow you to take the proverbial forks in the road within your own code logically."
+ </div>
+ </aside>
+ <h2>What Are Conditionals?</h2>
+ <ul>
+ <li>Conditionals are <strong>statements that ask questions</strong> in your code.</li>
+ <li>These questions have <strong>true or false answers</strong>, allowing the program to choose which lines of code to execute.</li>
+ <li>They help direct the <strong>control flow</strong> of the program based on decisions.</li>
+ </ul>
+ <hr>
+ <h2>Comparison Operators in Python</h2>
+ <p>Python uses special symbols (operators) to compare values. These operators are the foundation of questions asked in conditionals.</p>
+ <table>
+ <thead>
+ <tr>
+ <th>Operator</th>
+ <th>Meaning</th>
+ <th>Notes</th>
+ </tr>
+ </thead>
+ <tbody>
+ <tr>
+ <td><code>&gt;</code></td>
+ <td>Greater than</td>
+ <td>Checks if left value is greater than right value</td>
+ </tr>
+ <tr>
+ <td><code>&gt;=</code></td>
+ <td>Greater than or equal</td>
+ <td>Typed as two characters (<code>&gt;=</code>) on the keyboard</td>
+ </tr>
+ <tr>
+ <td><code>&lt;</code></td>
+ <td>Less than</td>
+ <td>Checks if left value is less than right value</td>
+ </tr>
+ <tr>
+ <td><code>&lt;=</code></td>
+ <td>Less than or equal</td>
+ <td>Typed as two characters (<code>&lt;=</code>) on the keyboard</td>
+ </tr>
+ <tr>
+ <td><code>==</code></td>
+ <td>Equals (equality)</td>
+ <td>Checks if left value equals right value; different from assignment</td>
+ </tr>
+ <tr>
+ <td><code>!=</code></td>
+ <td>Not equal</td>
+ <td>Checks if left value is not equal to right value</td>
+ </tr>
+ </tbody>
+ </table>
+ <aside class="callout callout-caution">
+ <div class=callout-title>Caution</div>
+ <div class=callout-content>
+ <strong>Important:</strong> Single equals sign <code>=</code> is <strong>assignment</strong>, not equality comparison.
+ </div>
+ </aside>
+ <hr>
+ <h2>Using <code>if</code> Statements in Python</h2>
+ <ul>
+ <li>The keyword <code>if</code> introduces a conditional statement.</li>
+ <li>Syntax requires a <strong>Boolean expression</strong> (a question that evaluates to <strong>True</strong> or <strong>False</strong>) after <code>if</code>.</li>
+ <li>Followed by a <strong>colon</strong> <code>:</code> and an <strong>indented block</strong> of code that runs only if the condition is <strong>True</strong>.</li>
+ </ul>
+ <h3>Example</h3>
+ <div class=code-listing>
+ <div class=component-flex-container>
+ <pre class="listing-body line-numbers language-python" tabindex=0><code class=language-python><span class="token keyword">if</span> x <span class="token operator">&lt;</span> y<span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"x is less than y"</span><span class="token punctuation">)</span><span aria-hidden=true class=line-numbers-rows><span></span><span></span></span></code></pre>
+ </div>
+ </div>
+ <ul>
+ <li><strong>Indentation</strong> (4 spaces or one tab) signals that the indented code belongs to the <code>if</code> statement.</li>
+ <li>Parentheses around the condition are <strong>optional</strong> in Python for simple conditions.</li>
+ <li>The <strong>Boolean expression</strong> here is <code>x &lt; y</code>.</li>
+ </ul>
+ <hr>
+ <h2>Boolean Expressions</h2>
+ <aside class="callout callout-note">
+ <div class=callout-title>Note</div>
+ <div class=callout-content>
+ "A Boolean expression is simply a question that has a yes or no answer, or technically a true or false answer."
+ </div>
+ </aside>
+ <ul>
+ <li>Boolean expressions use the comparison operators.</li>
+ <li>They decide the control flow: if true, execute the indented code; if false, skip it.</li>
+ </ul>
+ <hr>
+ <h2>Example Program: Comparing Two Integers</h2>
+ <p>This program compares two integers entered by the user and prints which one is larger or if they are equal.</p>
+ <div class=code-listing>
+ <div class=component-flex-container>
+ <pre class="listing-body line-numbers language-python" tabindex=0><code class=language-python>x <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span><span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">"What's x? "</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+y <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span><span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">"What's y? "</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token keyword">if</span> x <span class="token operator">&lt;</span> y<span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"x is less than y"</span><span class="token punctuation">)</span>
+
+<span class="token keyword">if</span> x <span class="token operator">&gt;</span> y<span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"x is greater than y"</span><span class="token punctuation">)</span>
+
+<span class="token keyword">if</span> x <span class="token operator">==</span> y<span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"x is equal to y"</span><span class="token punctuation">)</span><span aria-hidden=true class=line-numbers-rows><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+ </div>
+ </div>
+ <ul>
+ <li><code>input()</code> gets a string from the user.</li>
+ <li><code>int()</code> converts the input to an integer.</li>
+ <li>Three separate <code>if</code> statements check all possibilities.</li>
+ </ul>
+ <hr>
+ <h2>Control Flow Visualized: Flow Chart</h2>
+ <ul>
+ <li>The program's logic can be visualized as a <strong>flow chart</strong> representing <strong>control flow</strong>.</li>
+ <li><strong>Start → Question 1 (x &lt; y?)</strong> → If true, print "x is less than y" → Continue</li>
+ <li><strong>Question 2 (x &gt; y?)</strong> → If true, print "x is greater than y" → Continue</li>
+ <li><strong>Question 3 (x == y?)</strong> → If true, print "x is equal to y" → End</li>
+ <li>Each question is a <strong>diamond shape</strong> in the flow chart representing a decision point.</li>
+ <li>Arrows labeled <strong>true</strong> or <strong>false</strong> dictate the path to follow.</li>
+ </ul>
+ <hr>
+ <h2>Critique of the Example Program</h2>
+ <ul>
+ <li>The program is <strong>correct</strong> but <strong>not well designed</strong>.</li>
+ <li>It asks <strong>all three questions every time</strong>, even if one condition already determined the answer.</li>
+ <li>This leads to <strong>repetitive and inefficient code</strong>.</li>
+ </ul>
+ <hr>
+ <h2>Improving Conditionals with <code>elif</code></h2>
+ <ul>
+ <li><code>elif</code> stands for "else if" and allows you to chain conditions more logically.</li>
+ <li>When using <code>elif</code>, once a true condition is found, the rest are skipped.</li>
+ <li>This avoids unnecessary checks and makes code more concise.</li>
+ </ul>
+ <h3>Conceptual Usage of <code>elif</code></h3>
+ <div class=code-listing>
+ <div class=component-flex-container>
+ <pre class="listing-body line-numbers language-python" tabindex=0><code class=language-python><span class="token keyword">if</span> x <span class="token operator">&lt;</span> y<span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"x is less than y"</span><span class="token punctuation">)</span>
+<span class="token keyword">elif</span> x <span class="token operator">&gt;</span> y<span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"x is greater than y"</span><span class="token punctuation">)</span>
+<span class="token keyword">else</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"x is equal to y"</span><span class="token punctuation">)</span><span aria-hidden=true class=line-numbers-rows><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+ </div>
+ </div>
+ <ul>
+ <li>Here, if <code>x &lt; y</code> is true, Python skips the <code>elif</code> and <code>else</code>.</li>
+ <li>If <code>x &lt; y</code> is false but <code>x &gt; y</code> is true, it executes the <code>elif</code> block.</li>
+ <li>If neither condition is true, it falls back to the <code>else</code> block.</li>
+ </ul>
+ <hr>
+ <h2>Key Notes on Syntax for Conditionals</h2>
+ <table>
+ <thead>
+ <tr>
+ <th>Aspect</th>
+ <th>Description</th>
+ </tr>
+ </thead>
+ <tbody>
+ <tr>
+ <td>Colon <code>:</code></td>
+ <td>Required at the end of the <code>if</code>, <code>elif</code>, and <code>else</code> lines</td>
+ </tr>
+ <tr>
+ <td>Indentation</td>
+ <td>Required to define the scope of the conditional block</td>
+ </tr>
+ <tr>
+ <td>Parentheses</td>
+ <td>Optional unless needed for clarity or complex expressions</td>
+ </tr>
+ <tr>
+ <td><code>==</code> vs <code>=</code></td>
+ <td><code>==</code> compares, <code>=</code> assigns</td>
+ </tr>
+ </tbody>
+ </table>
+ <hr>
+ <h2>Summary Table: Comparison Operators and Their Purpose</h2>
+ <table>
+ <thead>
+ <tr>
+ <th>Operator</th>
+ <th>Purpose</th>
+ <th>Example</th>
+ </tr>
+ </thead>
+ <tbody>
+ <tr>
+ <td><code>&gt;</code></td>
+ <td>Greater than</td>
+ <td><code>if x &gt; y:</code></td>
+ </tr>
+ <tr>
+ <td><code>&gt;=</code></td>
+ <td>Greater than or equal</td>
+ <td><code>if x &gt;= y:</code></td>
+ </tr>
+ <tr>
+ <td><code>&lt;</code></td>
+ <td>Less than</td>
+ <td><code>if x &lt; y:</code></td>
+ </tr>
+ <tr>
+ <td><code>&lt;=</code></td>
+ <td>Less than or equal</td>
+ <td><code>if x &lt;= y:</code></td>
+ </tr>
+ <tr>
+ <td><code>==</code></td>
+ <td>Equal to (comparison)</td>
+ <td><code>if x == y:</code></td>
+ </tr>
+ <tr>
+ <td><code>!=</code></td>
+ <td>Not equal to</td>
+ <td><code>if x != y:</code></td>
+ </tr>
+ </tbody>
+ </table>
+ <hr>
+ <h2>Summary Table: Conditional Keywords</h2>
+ <table>
+ <thead>
+ <tr>
+ <th>Keyword</th>
+ <th>Function</th>
+ <th>Example</th>
+ </tr>
+ </thead>
+ <tbody>
+ <tr>
+ <td><code>if</code></td>
+ <td>Introduces a conditional block, runs if condition true</td>
+ <td><code>if x &lt; y:</code></td>
+ </tr>
+ <tr>
+ <td><code>elif</code></td>
+ <td>Else if: runs if previous conditions false and this true</td>
+ <td><code>elif x &gt; y:</code></td>
+ </tr>
+ <tr>
+ <td><code>else</code></td>
+ <td>Runs if all previous conditions false</td>
+ <td><code>else:</code></td>
+ </tr>
+ </tbody>
+ </table>
+ <p>This content ensures you understand how to use conditionals in Python to control program flow by asking true/false questions and responding accordingly.</p>
+ <hr>
+ <h2>Improving Conditional Logic with <code>if</code>, <code>elif</code>, <code>else</code></h2>
+ <aside class="callout callout-note">
+ <div class=callout-title>Note</div>
+ <div class=callout-content>
+ "Instead of asking multiple if questions independently, we can use mutually exclusive conditions with <strong>elif</strong> and <strong>else</strong> to ask fewer questions and write clearer, more efficient code."
+ </div>
+ </aside>
+ <h3>Using <code>if</code>, <code>elif</code>, and <code>else</code> Instead of Multiple <code>ifs</code></h3>
+ <ul>
+ <li><strong>Original approach:</strong> Multiple <code>if</code> statements check all conditions regardless of earlier true answers.</li>
+ <li><strong>Improved approach:</strong> Use <code>if</code> followed by <code>elif</code> (else if) and then optionally <code>else</code> to make conditions mutually exclusive.</li>
+ <li><strong>Benefit:</strong> Once a condition is true, Python skips the remaining conditions, asking fewer questions.</li>
+ </ul>
+ <hr>
+ <h2>Logical Flow in the Improved Program</h2>
+ <table>
+ <thead>
+ <tr>
+ <th>Step</th>
+ <th>Condition Tested</th>
+ <th>Outcome if True</th>
+ <th>Next Step if False</th>
+ </tr>
+ </thead>
+ <tbody>
+ <tr>
+ <td>1</td>
+ <td><code>x &lt; y</code></td>
+ <td>Print "x is less than y" and <strong>stop</strong></td>
+ <td>Check <code>x &gt; y</code></td>
+ </tr>
+ <tr>
+ <td>2</td>
+ <td><code>x &gt; y</code></td>
+ <td>Print "x is greater than y" and <strong>stop</strong></td>
+ <td>Check <code>x == y</code></td>
+ </tr>
+ <tr>
+ <td>3</td>
+ <td><code>x == y</code></td>
+ <td>Print "x is equal to y" and <strong>stop</strong></td>
+ <td>(Optionally handle false case, but logically unnecessary)</td>
+ </tr>
+ </tbody>
+ </table>
+ <ul>
+ <li><strong>Example:</strong>
+ <ul>
+ <li>Input: <code>x=1, y=2</code> → Only first condition true, program stops after first question.</li>
+ <li>Input: <code>x=2, y=1</code> → First condition false, second true, program stops after second question.</li>
+ <li>Input: <code>x=1, y=1</code> → First two false, third true.</li>
+ </ul>
+ </li>
+ </ul>
+ <hr>
+ <h2>Flowchart Representation</h2>
+ <ul>
+ <li>Using <code>if</code>, <code>elif</code>, <code>elif</code>:
+ <ul>
+ <li>The program may ask 1, 2, or 3 questions depending on inputs.</li>
+ </ul>
+ </li>
+ <li>Using <code>if</code>, <code>elif</code>, <code>else</code>:
+ <ul>
+ <li>Eliminates the need to check <code>x == y</code> explicitly because it is the only remaining option after the first two conditions fail.</li>
+ </ul>
+ </li>
+ </ul>
+ <hr>
+ <h2>Replacing the Final <code>elif</code> with <code>else</code></h2>
+ <ul>
+ <li><strong>Code before:</strong> Using <code>elif x == y:</code></li>
+ <li><strong>Code after (using <code>else</code>):</strong> Using <code>else:</code></li>
+ <li><strong>Why?</strong> If neither <code>x &lt; y</code> nor <code>x &gt; y</code> is true, <code>x</code> must be equal to <code>y</code> logically, so no need to explicitly check <code>x == y</code>.</li>
+ </ul>
+ <hr>
+ <h2>Advantages of Using <code>else</code> at the End</h2>
+ <table>
+ <thead>
+ <tr>
+ <th>Aspect</th>
+ <th>Using <code>elif x == y</code></th>
+ <th>Using <code>else</code></th>
+ </tr>
+ </thead>
+ <tbody>
+ <tr>
+ <td>Number of conditions</td>
+ <td>3</td>
+ <td>2</td>
+ </tr>
+ <tr>
+ <td>Code complexity</td>
+ <td>Higher</td>
+ <td>Lower</td>
+ </tr>
+ <tr>
+ <td>Readability</td>
+ <td>Slightly harder</td>
+ <td>Easier to read and maintain</td>
+ </tr>
+ <tr>
+ <td>Logical clarity</td>
+ <td>Explicit check</td>
+ <td>Logically implied default case</td>
+ </tr>
+ <tr>
+ <td>Potential for mistakes</td>
+ <td>Slightly higher (more code)</td>
+ <td>Lower (simpler control flow)</td>
+ </tr>
+ </tbody>
+ </table>
+ <hr>
+ <h2>Using <code>or</code> to Combine Conditions</h2>
+ <ul>
+ <li>You can combine multiple conditions into one using the <code>or</code> keyword.</li>
+ <li><strong>Example:</strong> Checking if x is not equal to y.</li>
+ <li><strong>Logic:</strong> If <code>x</code> is either less than or greater than <code>y</code>, it is <strong>not</strong> equal to <code>y</code>. Otherwise, it must be equal.</li>
+ </ul>
+ <hr>
+ <h2>Summary Table of Key Control Flow Statements</h2>
+ <table>
+ <thead>
+ <tr>
+ <th>Statement</th>
+ <th>Purpose</th>
+ <th>Behavior</th>
+ <th>Example</th>
+ </tr>
+ </thead>
+ <tbody>
+ <tr>
+ <td><code>if</code></td>
+ <td>Checks a condition</td>
+ <td>Executes block if condition is true</td>
+ <td><code>if x &lt; y:</code></td>
+ </tr>
+ <tr>
+ <td><code>elif</code></td>
+ <td>Checks another condition if previous <code>if</code> or <code>elif</code> was false</td>
+ <td>Mutually exclusive to previous conditions</td>
+ <td><code>elif x &gt; y:</code></td>
+ </tr>
+ <tr>
+ <td><code>else</code></td>
+ <td>Executes if all previous conditions were false</td>
+ <td>Catches all remaining cases (default)</td>
+ <td><code>else:</code></td>
+ </tr>
+ <tr>
+ <td><code>or</code> (operator)</td>
+ <td>Combines multiple conditions in one expression</td>
+ <td>True if <strong>any</strong> condition is true</td>
+ <td><code>if x &lt; y or x &gt; y:</code></td>
+ </tr>
+ </tbody>
+ </table>
+ <hr>
+ <h2>Explanation of Code Behavior Using Metaphor</h2>
+ <aside class="callout callout-note">
+ <div class=callout-title>Note</div>
+ <div class=callout-content>
+ Imagine you are asking a series of questions to identify a person's favorite fruit. Once you know the answer is "apple," you stop asking any more questions. If it's not "apple," you ask if it's "banana," and if not, you ask if it's "cherry." Finally, if all these are false, you conclude it must be "date" without asking explicitly. This saves time and effort by avoiding unnecessary questions. Similarly, <code>if</code>, <code>elif</code>, and <code>else</code> help the program stop asking conditions once an answer is found.
+ </div>
+ </aside>
+ <hr>
+ <h2>Important Takeaways</h2>
+ <ul>
+ <li>Use <code>if</code> → <code>elif</code> → <code>else</code> for mutually exclusive conditions to <strong>reduce the number of questions asked</strong>.</li>
+ <li>Use <code>else</code> as a <strong>catchall</strong> to simplify logic when all other cases are excluded.</li>
+ <li>Use <code>or</code> to <strong>combine multiple checks</strong> into a single conditional expression.</li>
+ <li>These strategies improve <strong>code readability</strong>, <strong>efficiency</strong>, and <strong>maintainability</strong>.</li>
+ </ul>
+ <hr>
+ <h2>Conditional Logic and Flow Control</h2>
+ <aside class="callout callout-note">
+ <div class=callout-title>Note</div>
+ <div class=callout-content>
+ "If-elif-else statements allow us to control the flow of a program by asking questions and executing code based on the answers."
+ </div>
+ </aside>
+ <h3>Comparing Two Values: Simplifying Conditions</h3>
+ <p>The lecture discussed how to compare two variables, <code>x</code> and <code>y</code>, to determine if they are equal or not, and how to simplify the code and flowcharts for these comparisons.</p>
+ <table>
+ <thead>
+ <tr>
+ <th>Scenario</th>
+ <th>Logic Description</th>
+ <th>Code Logic Example</th>
+ </tr>
+ </thead>
+ <tbody>
+ <tr>
+ <td>Check if <code>x &lt; y</code></td>
+ <td>If true, print "x is not equal to y" and stop</td>
+ <td><code>if x &lt; y: print("x is not equal to y")</code></td>
+ </tr>
+ <tr>
+ <td>Check if <code>x &gt; y</code></td>
+ <td>If true, print "x is not equal to y" and stop</td>
+ <td><code>elif x &gt; y: print("x is not equal to y")</code></td>
+ </tr>
+ <tr>
+ <td>Otherwise (<code>x == y</code>)</td>
+ <td>Print "x is equal to y" and stop</td>
+ <td><code>else: print("x is equal to y")</code></td>
+ </tr>
+ </tbody>
+ </table>
+ <ul>
+ <li>The code can be simplified by <strong>avoiding unnecessary repeated checks</strong>.</li>
+ <li>Instead of checking both <code>x &lt; y</code> and <code>x &gt; y</code>, use a single condition to check if <code>x != y</code> (not equal).</li>
+ <li>If <code>x != y</code> is false, it implies <code>x == y</code>.</li>
+ </ul>
+ <h3>Simplified Conditional Example</h3>
+ <div class=code-listing>
+ <div class=component-flex-container>
+ <pre class="listing-body line-numbers language-python" tabindex=0><code class=language-python><span class="token keyword">if</span> x <span class="token operator">!=</span> y<span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"x is not equal to y"</span><span class="token punctuation">)</span>
+<span class="token keyword">else</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"x is equal to y"</span><span class="token punctuation">)</span><span aria-hidden=true class=line-numbers-rows><span></span><span></span><span></span><span></span></span></code></pre>
+ </div>
+ </div>
+ <ul>
+ <li>This approach reduces the number of questions asked by the program to <strong>just one</strong>.</li>
+ <li>The flowchart of this logic is simpler, with only one decision diamond.</li>
+ </ul>
+ <h3>Alternative: Checking Equality First</h3>
+ <p>You can invert the logic by checking equality first:</p>
+ <div class=code-listing>
+ <div class=component-flex-container>
+ <pre class="listing-body line-numbers language-python" tabindex=0><code class=language-python><span class="token keyword">if</span> x <span class="token operator">==</span> y<span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"x is equal to y"</span><span class="token punctuation">)</span>
+<span class="token keyword">else</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"x is not equal to y"</span><span class="token punctuation">)</span><span aria-hidden=true class=line-numbers-rows><span></span><span></span><span></span><span></span></span></code></pre>
+ </div>
+ </div>
+ <ul>
+ <li>In this case, the print statements are swapped.</li>
+ <li>The program still asks only one question, focusing on either equality or inequality.</li>
+ </ul>
+ <hr>
+ <h2>Python Syntax Essentials: Indentation and Colons</h2>
+ <table>
+ <thead>
+ <tr>
+ <th>Syntax Element</th>
+ <th>Requirement</th>
+ <th>Explanation</th>
+ </tr>
+ </thead>
+ <tbody>
+ <tr>
+ <td>Indentation</td>
+ <td>Mandatory</td>
+ <td>Python enforces indentation to define blocks of code. Missing indentation causes errors.</td>
+ </tr>
+ <tr>
+ <td>Colon (<code>:</code>)</td>
+ <td>Mandatory</td>
+ <td>Used after statements like <code>if</code>, <code>elif</code>, and <code>else</code> to indicate the start of a block.</td>
+ </tr>
+ </tbody>
+ </table>
+ <ul>
+ <li>Python differs from languages like C, C++, and Java, which use curly braces <code>{}</code> to define blocks.</li>
+ <li>In Python, <strong>indentation replaces braces</strong> and is strictly enforced.</li>
+ </ul>
+ <hr>
+ <h2>Combining Conditions with <code>and</code></h2>
+ <p>To check if a value falls within a range, use the <code>and</code> keyword to combine multiple conditions.</p>
+ <h3>Example: Assigning Grades Based on Score</h3>
+ <p>The lecture illustrated assigning letter grades based on numeric scores:</p>
+ <table>
+ <thead>
+ <tr>
+ <th>Grade</th>
+ <th>Score Range</th>
+ <th>Python Conditional Example</th>
+ </tr>
+ </thead>
+ <tbody>
+ <tr>
+ <td>A</td>
+ <td>90 to 100</td>
+ <td><code>if score &gt;= 90 and score &lt;= 100: print("A")</code></td>
+ </tr>
+ <tr>
+ <td>B</td>
+ <td>80 to 89</td>
+ <td><code>elif score &gt;= 80 and score &lt; 90: print("B")</code></td>
+ </tr>
+ <tr>
+ <td>C</td>
+ <td>70 to 79</td>
+ <td><code>elif score &gt;= 70 and score &lt; 80: print("C")</code></td>
+ </tr>
+ <tr>
+ <td>D</td>
+ <td>60 to 69</td>
+ <td><code>elif score &gt;= 60 and score &lt; 70: print("D")</code></td>
+ </tr>
+ <tr>
+ <td>F</td>
+ <td>Below 60</td>
+ <td><code>else: print("F")</code></td>
+ </tr>
+ </tbody>
+ </table>
+ <ul>
+ <li>The <code>else</code> clause acts as a <strong>catch-all</strong> for scores below 60.</li>
+ <li>This example follows the common U.S. grading convention, skipping the letter E.</li>
+ </ul>
+ <h3>Using Chained Comparisons in Python</h3>
+ <p>Python allows chaining comparisons like on paper, which makes code cleaner:</p>
+ <div class=code-listing>
+ <div class=component-flex-container>
+ <pre class="listing-body line-numbers language-python" tabindex=0><code class=language-python><span class="token keyword">if</span> <span class="token number">90</span> <span class="token operator">&lt;=</span> score <span class="token operator">&lt;=</span> <span class="token number">100</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"A"</span><span class="token punctuation">)</span>
+<span class="token keyword">elif</span> <span class="token number">80</span> <span class="token operator">&lt;=</span> score <span class="token operator">&lt;</span> <span class="token number">90</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"B"</span><span class="token punctuation">)</span>
+<span class="token keyword">elif</span> <span class="token number">70</span> <span class="token operator">&lt;=</span> score <span class="token operator">&lt;</span> <span class="token number">80</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"C"</span><span class="token punctuation">)</span>
+<span class="token keyword">elif</span> <span class="token number">60</span> <span class="token operator">&lt;=</span> score <span class="token operator">&lt;</span> <span class="token number">70</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"D"</span><span class="token punctuation">)</span>
+<span class="token keyword">else</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"F"</span><span class="token punctuation">)</span><span aria-hidden=true class=line-numbers-rows><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+ </div>
+ </div>
+ <ul>
+ <li>This chained comparison is equivalent to combining two Boolean expressions with <code>and</code>.</li>
+ <li>It reduces redundancy and improves readability.</li>
+ </ul>
+ <hr>
+ <h2>Summary of Key Points</h2>
+ <table>
+ <thead>
+ <tr>
+ <th>Concept</th>
+ <th>Explanation</th>
+ </tr>
+ </thead>
+ <tbody>
+ <tr>
+ <td>Simplify Conditionals</td>
+ <td>Minimize the number of questions by combining checks or using direct comparisons (<code>!=</code>, <code>==</code>).</td>
+ </tr>
+ <tr>
+ <td>Python Indentation</td>
+ <td>Indentation is <strong>required</strong> to define blocks; missing indentation breaks the program.</td>
+ </tr>
+ <tr>
+ <td>Colons in Python</td>
+ <td>Colons are mandatory after <code>if</code>, <code>elif</code>, <code>else</code> to start the block.</td>
+ </tr>
+ <tr>
+ <td>Combining Conditions</td>
+ <td>Use <code>and</code> to check multiple conditions simultaneously; use chained comparisons for cleaner syntax.</td>
+ </tr>
+ <tr>
+ <td>Grade Assignment Logic</td>
+ <td>Assign grades by checking numeric ranges with combined conditions or chained comparisons.</td>
+ </tr>
+ </tbody>
+ </table>
+ <hr>
+ <h2>Important Notes on Logic and Code Efficiency</h2>
+ <ul>
+ <li>Avoid redundant conditions; if checking inequality suffices, do not check both less than and greater than.</li>
+ <li>Use logical operators like <code>and</code> to combine conditions succinctly.</li>
+ <li>Writing cleaner code reduces bugs and improves maintainability.</li>
+ <li>Python's syntax design encourages readability and simplicity through enforced indentation and colon use.</li>
+ </ul>
+ <div class=code-listing>
+ <div class=listing-header>Example of clean grade assignment code</div>
+ <div class=component-flex-container>
+ <pre class="listing-body line-numbers language-python" tabindex=0><code class=language-python>score <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span><span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">"Enter the score: "</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token keyword">if</span> <span class="token number">90</span> <span class="token operator">&lt;=</span> score <span class="token operator">&lt;=</span> <span class="token number">100</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"A"</span><span class="token punctuation">)</span>
+<span class="token keyword">elif</span> <span class="token number">80</span> <span class="token operator">&lt;=</span> score <span class="token operator">&lt;</span> <span class="token number">90</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"B"</span><span class="token punctuation">)</span>
+<span class="token keyword">elif</span> <span class="token number">70</span> <span class="token operator">&lt;=</span> score <span class="token operator">&lt;</span> <span class="token number">80</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"C"</span><span class="token punctuation">)</span>
+<span class="token keyword">elif</span> <span class="token number">60</span> <span class="token operator">&lt;=</span> score <span class="token operator">&lt;</span> <span class="token number">70</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"D"</span><span class="token punctuation">)</span>
+<span class="token keyword">else</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"F"</span><span class="token punctuation">)</span><span aria-hidden=true class=line-numbers-rows><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+ </div>
+ </div>
+ <h2>Optimizing Conditional Logic for Grade Assignment</h2>
+ <aside class="callout callout-note">
+ <div class=callout-title>Note</div>
+ <div class=callout-content>
+ "Simplifying conditional checks not only makes the code shorter but also improves readability and maintainability."
+ </div>
+ </aside>
+ <h3>Initial Approach: Two-Question Checks Per Grade Range</h3>
+ <ul>
+ <li>Original logic asked two questions for each grade range:
+ <ul>
+ <li>Example for A: Is score &gt; 90 <strong>and</strong> score &lt; 100?</li>
+ <li>Example for B: Is score &gt; 80 <strong>and</strong> score &lt; 90?</li>
+ </ul>
+ </li>
+ <li>This approach, while explicit, is verbose and repetitive.</li>
+ </ul>
+ <h3>Improved Approach: Single-Condition Checks Using <code>if-elif-else</code></h3>
+ <ul>
+ <li>Assumption: Input scores are between 0 and 100.</li>
+ <li>Logic structure:</li>
+ </ul>
+ <table>
+ <thead>
+ <tr>
+ <th>Condition</th>
+ <th>Grade</th>
+ </tr>
+ </thead>
+ <tbody>
+ <tr>
+ <td>If score ≥ 90</td>
+ <td>A</td>
+ </tr>
+ <tr>
+ <td>Else if score ≥ 80</td>
+ <td>B</td>
+ </tr>
+ <tr>
+ <td>Else if score ≥ 70</td>
+ <td>C</td>
+ </tr>
+ <tr>
+ <td>Else if score ≥ 60</td>
+ <td>D</td>
+ </tr>
+ <tr>
+ <td>Else</td>
+ <td>F</td>
+ </tr>
+ </tbody>
+ </table>
+ <ul>
+ <li><strong>Key insight:</strong> Because of the <code>if-elif-else</code> structure, each condition implicitly assumes the previous conditions are false.</li>
+ <li>For example, when checking <code>score ≥ 80</code>, we already know <code>score &lt; 90</code> because the first <code>if</code> failed.</li>
+ <li>This reduces the number of questions asked, minimizing redundant checks.</li>
+ </ul>
+ <h3>Benefits of the Optimized Logic</h3>
+ <table>
+ <thead>
+ <tr>
+ <th>Aspect</th>
+ <th>Explanation</th>
+ </tr>
+ </thead>
+ <tbody>
+ <tr>
+ <td><strong>Succinctness</strong></td>
+ <td>Fewer conditions per grade range; more compact code.</td>
+ </tr>
+ <tr>
+ <td><strong>Readability</strong></td>
+ <td>Easier to follow logic flow since each condition is a single, clear check without double bounds.</td>
+ </tr>
+ <tr>
+ <td><strong>Maintainability</strong></td>
+ <td>Less code means fewer places for bugs; the logic is easier to update and understand over time.</td>
+ </tr>
+ </tbody>
+ </table>
+ <h3>Summary of Logic Flow</h3>
+ <ul>
+ <li>The <code>if-elif-else</code> chain works by <strong>short-circuiting</strong>:
+ <ul>
+ <li>Once a condition is met, the rest are skipped.</li>
+ </ul>
+ </li>
+ <li>This means <strong>each condition implicitly narrows the score range</strong> without explicitly checking both upper and lower bounds.</li>
+ </ul>
+ <hr>
+ <p>This method is a <strong>minor optimization</strong> but a good example of writing cleaner, more efficient conditional statements by leveraging the structure of control flow statements.</p>
+ </main>
+ 
+ 
+ 
+ 
+ 
+ 

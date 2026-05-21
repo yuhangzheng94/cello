@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Study Repository - CELLO</title>
+    <style>
+        html, body { margin: 0; padding: 1px; height: 100%; overflow: hidden; font-family: "Inter", system-ui, -apple-system, sans-serif; }
+        h1 { text-align: center; }
+        li { line-height: 1.5; }
+
+        .grid-container { display: grid; grid-template-columns: 40% 60%; height: 100vh; gap: 0; }
+
+        table { border-collapse: collapse; text-align: center; }
+        table, th, td { border: 1px solid black; padding: 0.25rem; }
+
+        #video-viewer { width: auto; height: auto; aspect-ratio: 16/9; }
+        #note-viewer { width: 100%; height: 100%; zoom: 75%; }
+    </style>
+</head>
+
+<body>
+    <div class="grid-container">
+        <div class="column">
+            <h1>CELLO User Study Repository</h1>
+            <div id="lecture-recording">
+                <h2>Lecture Video</h2>
+
+                <p><i>(If the embedded video does not work, click <a
+                            href="https://www.youtube.com/watch?v=xIfyRn5jmgE">here</a> to open the YouTube video in a
+                        new
+                        tab.)</i></p>
+
+                <iframe id="video-viewer" src="https://www.youtube.com/embed/xIfyRn5jmgE" target="_blank"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+            </div>
+
+            <div id="lecture-notes">
+                <h2>Lecture Notes</h2>
+                <p>Click a link below to view lecture notes in the right panel or in a new tab:</p>
+                <!-- <ul id="notes-list"></ul> -->
+                <table class="notes-table" aria-label="Lecture notes">
+                    <thead>
+                        <tr>
+                            <th scope="col">Note</th>
+                            <th scope="col">View Here</th>
+                            <th scope="col">New Tab</th>
+                        </tr>
+                    </thead>
+                    <tbody id="notes-list"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="column">
+            <iframe id="note-viewer" name="note-viewer" src="about:blank" frameborder="1"></iframe>
+        </div>
+    </div>
+
+    <script type="module">
+        const LABELS = ["Jordan", "Alex", "Riley"];
+        const BASE = "https://yuhangzheng94.github.io/cello/";
+
+        /** @param {readonly string[]} items */
+        function shuffle(items) {
+            const result = [...items];
+            for (let i = result.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [result[i], result[j]] = [result[j], result[i]];
+            }
+            return result;
+        }
+
+        const list = document.querySelector("#notes-list");
+
+        const baseUrl = new URL(BASE);
+        const displayBase = `${baseUrl.hostname}${baseUrl.pathname.replace(/\/$/, "")}/`;
+
+        const order = shuffle(LABELS);
+
+        list.innerHTML = order
+            .map((label) => {
+                const slug = label.toLowerCase();
+                const href = new URL(`${slug}.html`, baseUrl).href;
+                return `<tr>
+                    <th scope="row">${label}</th>
+                    <td><a href="${href}" target="note-viewer" rel="noopener noreferrer">[ View ]</a></td>
+                    <td><a href="${href}" target="_blank" rel="noopener noreferrer">[ Open ]</a></td>
+                </tr>`;
+            })
+            .join("");
+    </script>
+</body>
+
+</html>

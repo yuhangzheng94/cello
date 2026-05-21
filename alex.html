@@ -1,0 +1,100 @@
+<!DOCTYPE html> <html lang=en style><!--
+ Page saved with SingleFile 
+--><meta charset=utf-8>
+<meta name=viewport content="width=device-width, initial-scale=1.0">
+<title>Lecture Notes (Alex)</title>
+<style>body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:#333;max-width:800px;margin:0 auto;padding:20px;background-color:#f9f9f9}h1,h2,h3{color:#2c3e50}header{text-align:center}code{font-family:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace;background-color:#eef1f2;padding:2px 4px;border-radius:4px;font-size:0.9em}pre{background-color:#2d3436;color:#fff;padding:15px;border-radius:8px;overflow-x:auto}pre code{background-color:transparent;color:inherit;padding:0}.symbol-list{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:center}.note{background-color:#fff3cd;border-left:5px solid #ffeeba;padding:10px;margin:20px 0}</style>
+<meta name=referrer content=no-referrer><meta http-equiv=content-security-policy content="default-src 'none'; font-src 'self' data:; img-src 'self' data:; style-src 'unsafe-inline'; media-src 'self' data:; script-src 'unsafe-inline' data:; object-src 'self' data:; frame-src 'self' data:;"></head>
+<body>
+ <header>
+ <h1>Conditionals (Alex)</h1>
+ 
+ </header>
+ <section>
+ <h2>Introduction</h2>
+ <p>Conditionals, or conditional statements, allow a program to ask questions and decide which code to execute based on the answers. They represent "forks in the road" within your code's logic.</p>
+ </section>
+ <section>
+ <h2>Comparison Operators</h2>
+ <p>Python includes built-in syntax for asking mathematical questions:</p>
+ <div class=symbol-list>
+ <code>&gt;</code> <span>Greater than</span>
+ <code>&gt;=</code> <span>Greater than or equal to</span>
+ <code>&lt;</code> <span>Less than</span>
+ <code>&lt;=</code> <span>Less than or equal to</span>
+ <code>==</code> <span>Equal to (Equality comparison)</span>
+ <code>!=</code> <span>Not equal to</span>
+ </div>
+ <div class=note>
+ <strong>Important:</strong> Note the difference between <code>=</code> and <code>==</code>. A single equals sign <code>=</code> is for <strong>assignment</strong> (setting a variable), while a double equals sign <code>==</code> is for <strong>comparison</strong>.
+ </div>
+ </section>
+ <section>
+ <h2>The <code>if</code> Statement</h2>
+ <p>The <code>if</code> statement is the most basic conditional keyword. If a <strong>Boolean expression</strong> (a question with a True/False answer) evaluates to True, the indented code block below it executes.</p>
+ 
+ <h3>Example: compare.py</h3>
+ <pre><code>x = int(input("What's x? "))
+y = int(input("What's y? "))
+
+if x &lt; y:
+    print("x is less than y")
+if x &gt; y:
+    print("x is greater than y")
+if x == y:
+    print("x is equal to y")</code></pre>
+ <h3>Syntax Rules</h3>
+ <ul>
+ <li><strong>Colons:</strong> Every <code>if</code> statement must end with a colon (<code>:</code>).</li>
+ <li><strong>Indentation:</strong> The code to be executed under the condition must be indented (typically 4 spaces or 1 tab). Python enforces this strictly.</li>
+ </ul>
+ </section>
+ <section>
+ <h2>Improving Design with <code>elif</code> and <code>else</code></h2>
+ <p>In the example above, the program asks three separate questions even if the first one is already answered. This is inefficient. We can use <code>elif</code> (else if) and <code>else</code> to create mutually exclusive conditions.</p>
+ <h3>The <code>elif</code> Keyword</h3>
+ <p>Using <code>elif</code> ensures that if the first condition is True, the program skips the remaining checks. This optimizes the <strong>control flow</strong>.</p>
+ <h3>The <code>else</code> Keyword</h3>
+ <p>If all previous <code>if</code> and <code>elif</code> conditions are False, the <code>else</code> block serves as a "catch-all" without needing an explicit question.</p>
+ <pre><code>if x &lt; y:
+    print("x is less than y")
+elif x &gt; y:
+    print("x is greater than y")
+else:
+    print("x is equal to y")</code></pre>
+ </section>
+ <section>
+ <h2>Logical Operators: <code>or</code> and <code>and</code></h2>
+ <p>You can combine multiple questions into a single statement using logical operators.</p>
+ <h3>Using <code>or</code></h3>
+ <p>An <code>or</code> statement is True if at least one of the conditions is True.</p>
+ <pre><code>if x &lt; y or x &gt; y:
+    print("x is not equal to y")
+else:
+    print("x is equal to y")</code></pre>
+ <h3>Using <code>and</code></h3>
+ <p>An <code>and</code> statement is True only if both conditions are True.</p>
+ <pre><code>if score &gt;= 90 and score &lt;= 100:
+    print("Grade: A")</code></pre>
+ </section>
+ <section>
+ <h2>Advanced Syntax: Chaining Comparisons</h2>
+ <p>Python allows for a more concise way to check ranges, similar to mathematical notation:</p>
+ <pre><code>if 90 &lt;= score &lt;= 100:
+    print("Grade: A")
+elif 80 &lt;= score &lt; 90:
+    print("Grade: B")</code></pre>
+ <p>This "chains" the comparisons, making the code easier to read and faster to type.</p>
+ </section>
+ <section>
+ <h2>Optimization Refinement</h2>
+ <p>By logically ordering your checks, you can simplify conditions even further. For a grading system, if you check for the highest grade first, you don't need to check the upper bound in subsequent steps because those scores have already been "caught" by previous blocks.</p>
+ <pre><code>if score &gt;= 90:
+    print("Grade: A")
+elif score &gt;= 80:
+    print("Grade: B")
+elif score &gt;= 70:
+    print("Grade: C")
+else:
+    print("Grade: F")</code></pre>
+ </section>
